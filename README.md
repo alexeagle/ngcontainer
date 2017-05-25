@@ -26,7 +26,7 @@ $ docker run -it --rm alexeagle/ngcontainer
 Any program that needs to talk to a browser (eg. protractor) should be run under xvfb when executing on a headless machine like on CI. The nice way to factor this is to have your top-level test command which you run locally:
 
 ```
-$ yarn tst
+$ yarn test
 ```
 
 Then in your CI configuration, you'd run
