@@ -18,7 +18,7 @@ where this container is used in CircleCI.
 To run locally:
 
 ```
-$ docker run -it --rm alexeagle/ngcontainer
+$ docker run -it --rm angular/ngcontainer
 ```
 
 ## Running tests
