@@ -6,6 +6,8 @@ if [ -z $TAG ]
 fi
 
 docker build . -t angular/ngcontainer:$TAG
-docker push angular/ngcontainer
+docker tag angular/ngcontainer:$TAG angular/ngcontainer:latest
+docker push angular/ngcontainer:$TAG
+docker push angular/ngcontainer:latest
 git tag -a $TAG -m "published to docker"
 git push --tags
