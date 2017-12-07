@@ -43,4 +43,15 @@ RUN echo "deb http://deb.debian.org/debian stretch main contrib" > /etc/apt/sour
  && apt-get install -y --no-install-recommends \
     brotli/stretch
 
+###
+# Buildifier
+# BUILD file formatter
+RUN git clone https://github.com/bazelbuild/buildtools.git \
+ && (cd buildtools \
+  && bazel build //buildifier \
+  && cp bazel-bin/buildifier/buildifier /usr/local/bin/ \
+  # conserve size of the image
+  && bazel clean --expunge \
+ )
+
 ENTRYPOINT ["/bin/bash"]
