@@ -2,10 +2,14 @@
 
 This docker container provides everything needed to build and test Angular applications:
 
-- Node, npm, and yarn
+- node 8.9.2
+- npm 5.5.1
+- yarn 1.3.2
 - Java 8 (for Closure Compiler and Bazel)
-- Bazel build tool - http://bazel.build
-- Google Chrome browser and xvfb (virtual framebuffer) for headless testing
+- Bazel build tool v0.8.1 - http://bazel.build
+- Google Chrome 63.0.3239.84
+- Mozilla Firefox 47.0.1
+- xvfb (virtual framebuffer) for headless testing
 - Brotli compression utility, making smaller files than gzip
 
 By using this, you avoid installation steps in your CI scripts and get a more consistent dev environment.
