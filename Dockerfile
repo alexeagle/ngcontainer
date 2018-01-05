@@ -43,7 +43,19 @@ RUN git clone https://github.com/bazelbuild/buildtools.git \
   && bazel build //buildifier \
   && cp bazel-bin/buildifier/buildifier /usr/local/bin/ \
   && bazel clean --expunge \
-  )
+  ) && rm -rf buildtools
+
+###
+# Skylint
+# .bzl file linter
+# Follows readme at https://github.com/bazelbuild/bazel/blob/master/site/docs/skylark/skylint.md#building-the-linter
+# 'bazel clean --expunge' conserves size of the image
+RUN git clone https://github.com/bazelbuild/bazel.git \
+ && (cd bazel \
+  && bazel build //src/tools/skylark/java/com/google/devtools/skylark/skylint:Skylint_deploy.jar \
+  && cp bazel-bin/src/tools/skylark/java/com/google/devtools/skylark/skylint/Skylint_deploy.jar /usr/local/bin \
+  && bazel clean --expunge \
+  ) && rm -rf bazel
 
 USER circleci
 
